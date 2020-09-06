@@ -7,5 +7,9 @@
 
 int main()
 {
+    using namespace boost::lambda2;
+
+    BOOST_TEST_EQ( (_1 + _2 * _3)( 1, 2, 3), 1 + 2 * 3 );
+
     return boost::report_errors();
 }
