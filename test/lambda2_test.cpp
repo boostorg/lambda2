@@ -47,5 +47,14 @@ int main()
     TEST_BINARY(^)
     TEST_UNARY(~)
 
+#if defined(_MSC_VER) && _MSC_VER == 1900 && !defined(_DEBUG)
+
+    // prevents crash in TEST_BINARY(/)
+    // no idea why
+
+    BOOST_TEST_EQ( (_1 / _2)( 0, 1 ), 0 / 1 );
+
+#endif
+
     return boost::report_errors();
 }
