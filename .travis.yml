@@ -249,7 +249,7 @@ install:
 script:
   - |-
     echo "using $TOOLSET : : $TRAVIS_COMPILER ;" > ~/user-config.jam
-  - ./b2 libs/lambda2/test toolset=$TOOLSET cxxstd=$CXXSTD
+  - ./b2 libs/lambda2/test toolset=$TOOLSET cxxstd=$CXXSTD variant=debug,release
 
 notifications:
   email:
