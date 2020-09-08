@@ -449,7 +449,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#overview">Overview</a>
 <ul class="sectlevel2">
 <li><a href="#overview_description">Description</a></li>
-<li><a href="#overview_usage_examples">Usage Examples</a></li>
+<li><a href="#overview_usage_examples">Usage Examples</a>
+<ul class="sectlevel3">
+<li><a href="#overview_counting_the_even_numbers">Counting the Even Numbers</a></li>
+<li><a href="#overview_finding_the_first_whitespace_character">Finding the First Whitespace Character</a></li>
+</ul>
+</li>
 <li><a href="#overview_dependencies">Dependencies</a></li>
 <li><a href="#overview_supported_compilers">Supported Compilers</a></li>
 </ul>
@@ -479,13 +484,59 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect2">
 <h3 id="overview_description">Description</h3>
 <div class="paragraph">
-<p>&#8230;&#8203;</p>
+<p>This is a simple, but functional, C&#43;&#43;14 lambda library. It takes
+advantage of the fact that the standard <code>&lt;functional&gt;</code> header already
+provides placeholders <code>_1</code>, <code>_2</code>, <code>_3</code>, and so on, for use with
+<code>std::bind</code>, and function objects such as <code>std::plus</code>, <code>std::greater</code>,
+<code>std::logical_not</code>, and <code>std::bit_xor</code>, corresponding to arithmetic,
+relational, logical and bitwise operators.</p>
+</div>
+<div class="paragraph">
+<p>This allows the library to provide a minimal implementation that
+still lets expressions such as <code>_1 + 5</code>, <code>_1 % 2 == 0</code>, <code>_1 &gt; _2</code>,
+or <code>_1 == ' ' || _1 == '\t'</code> to be composed and used as function
+objects.</p>
+</div>
+<div class="paragraph">
+<p>These "lambda" expressions can also be freely combined with <code>std::bind</code>.
+For example, <code>std::bind( f, _1 ) == std::bind( g, _1 )</code> and
+<code>std::bind( f, _1 + _2 )</code> both work and have the expected behavior.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="overview_usage_examples">Usage Examples</h3>
-<div class="paragraph">
-<p>&#8230;&#8203;</p>
+<div class="sect3">
+<h4 id="overview_counting_the_even_numbers">Counting the Even Numbers</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>#include &lt;boost/lambda2.hpp&gt;
+#include &lt;algorithm&gt;
+
+using namespace boost::lambda2;
+
+int count_even( int const * first, int const * last )
+{
+    return std::count_if( first, last, _1 % 2 == 0 );
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="overview_finding_the_first_whitespace_character">Finding the First Whitespace Character</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>#include &lt;boost/lambda2.hpp&gt;
+#include &lt;algorithm&gt;
+
+char const * find_whitespace( char const * first, char const * last )
+{
+    using namespace boost::lambda2;
+
+    return std::find_if( first, last,
+        _1 == ' ' || _1 == '\t' || _1 == '\r' || _1 == '\n' );
+}</code></pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -973,7 +1024,7 @@ the <a href="http://www.boost.org/LICENSE_1_0.txt">Boost Software License, Versi
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2020-09-08 03:41:34 +0300
+Last updated 2020-09-08 15:29:50 +0300
 </div>
 </div>
 <style>
