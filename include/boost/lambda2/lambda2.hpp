@@ -16,7 +16,9 @@ namespace lambda2
 namespace detail
 {
 
-template<class T, class T2 = std::remove_reference_t<T>> using is_lambda_expression =
+template<class T> using remove_cvref_t = std::remove_cv_t<std::remove_reference_t<T>>;
+
+template<class T, class T2 = remove_cvref_t<T>> using is_lambda_expression =
     std::integral_constant<bool, std::is_placeholder<T2>::value || std::is_bind_expression<T2>::value>;
 
 template<class A> using enable_unary_lambda =
@@ -38,8 +40,7 @@ template<class A, class B> using enable_binary_lambda =
     template<class A, class B, class = detail::enable_binary_lambda<A, B>> \
     auto operator op( A&& a, B&& b ) \
     { \
-        return std::bind( std::fn<>(), std::forward<A>(a), \
-            std::forward<B>(b) ); \
+        return std::bind( std::fn<>(), std::forward<A>(a), std::forward<B>(b) ); \
     }
 
 BOOST_LAMBDA2_BINARY_LAMBDA(+, plus)
