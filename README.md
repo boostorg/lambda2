@@ -1,9 +1,11 @@
-# lambda2
+# Lambda2
 
 This is an implementation of the simple C++14 lambda library
 described in [this post](https://pdimov.github.io/blog/2020/07/22/a-c14-lambda-library/).
 
 It has no dependencies and consists of a [single header](include/boost/lambda2/lambda2.hpp).
+
+See [the documentation](https://pdimov.github.io/lambda2/) for more information.
 
 ## Supported Compilers
 
