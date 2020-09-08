@@ -43,16 +43,13 @@ template<class A> auto operator~( A && a );
 } // namespace boost
 ```
 
-### Definitions
-
-A type `T` is a _lambda expression_ if, for the type `T2` that is
-`std::remove_cv_t<std::remove_reference_t<T>>`, the expression
-`std::is_placeholder<T2>::value || std::is_bind_expression<T2>::value`
-is `true`.
+### Common Requirements
 
 All operators defined in the subsequent sections only participate in
-overload resolution if at least one of their operands is a _lambda
-expression_.
+overload resolution if at least one of their operands is such that for
+its unqualified type `T`, the expression
+`std::is_placeholder<T>::value || std::is_bind_expression<T>::value`
+is `true`.
 
 ### Arithmetic Operators
 

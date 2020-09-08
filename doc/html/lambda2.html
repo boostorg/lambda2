@@ -459,7 +459,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#ref_boostlambda2lambda2_hpp">&lt;boost/lambda2/lambda2.hpp&gt;</a>
 <ul class="sectlevel3">
 <li><a href="#ref_synopsis">Synopsis</a></li>
-<li><a href="#ref_definitions">Definitions</a></li>
+<li><a href="#ref_common_requirements">Common Requirements</a></li>
 <li><a href="#ref_arithmetic_operators">Arithmetic Operators</a></li>
 <li><a href="#ref_relational_operators">Relational Operators</a></li>
 <li><a href="#ref_logical_operators">Logical Operators</a></li>
@@ -557,17 +557,13 @@ template&lt;class A&gt; auto operator~( A &amp;&amp; a );
 </div>
 </div>
 <div class="sect3">
-<h4 id="ref_definitions">Definitions</h4>
-<div class="paragraph">
-<p>A type <code>T</code> is a <em>lambda expression</em> if, for the type <code>T2</code> that is
-<code>std::remove_cv_t&lt;std::remove_reference_t&lt;T&gt;&gt;</code>, the expression
-<code>std::is_placeholder&lt;T2&gt;::value || std::is_bind_expression&lt;T2&gt;::value</code>
-is <code>true</code>.</p>
-</div>
+<h4 id="ref_common_requirements">Common Requirements</h4>
 <div class="paragraph">
 <p>All operators defined in the subsequent sections only participate in
-overload resolution if at least one of their operands is a <em>lambda
-expression</em>.</p>
+overload resolution if at least one of their operands is such that for
+its unqualified type <code>T</code>, the expression
+<code>std::is_placeholder&lt;T&gt;::value || std::is_bind_expression&lt;T&gt;::value</code>
+is <code>true</code>.</p>
 </div>
 </div>
 <div class="sect3">
