@@ -1,0 +1,30 @@
+////
+Copyright 2020 Peter Dimov
+Distributed under the Boost Software License, Version 1.0.
+https://www.boost.org/LICENSE_1_0.txt
+////
+
+[#overview]
+# Overview
+:idprefix: overview_
+
+## Description
+
+...
+
+## Usage Examples
+
+...
+
+## Dependencies
+
+None. A single, self-contained header.
+
+## Supported Compilers
+
+* GCC 5 or later with `-std=c++14` or above
+* Clang 3.5 or later with `-std=c++14` or above
+* Visual Studio 2015, 2017, 2019
+
+Tested on https://travis-ci.org/github/pdimov/lambda2[Travis] and
+https://ci.appveyor.com/project/pdimov/lambda2[Appveyor].
