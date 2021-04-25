@@ -5,7 +5,7 @@ described in [this post](https://pdimov.github.io/blog/2020/07/22/a-c14-lambda-l
 
 It has no dependencies and consists of a [single header](include/boost/lambda2/lambda2.hpp).
 
-See [the documentation](https://pdimov.github.io/lambda2/) for more information.
+See [the documentation](https://www.boost.org/doc/libs/develop/libs/lambda2/) for more information.
 
 ## Supported Compilers
 
