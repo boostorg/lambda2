@@ -3,9 +3,14 @@
 # https://www.boost.org/LICENSE_1_0.txt
 
 import testing ;
+import ../../config/checks/config : requires ;
 
 project : requirements
+
   <warnings>extra
+
+  [ requires cxx14_return_type_deduction ]
+
   <toolset>msvc:<warnings-as-errors>on
   <toolset>clang:<warnings-as-errors>on
   <toolset>gcc:<warnings-as-errors>on ;
