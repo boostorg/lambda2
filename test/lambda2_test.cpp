@@ -63,5 +63,7 @@ int main()
     TEST_BINARY(<<)
     TEST_BINARY(>>)
 
+    TEST_UNARY(+)
+
     return boost::report_errors();
 }

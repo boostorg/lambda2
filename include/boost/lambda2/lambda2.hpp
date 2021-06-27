@@ -89,6 +89,8 @@ namespace lambda2_detail
 BOOST_LAMBDA2_BINARY_FN(<<, left_shift)
 BOOST_LAMBDA2_BINARY_FN(>>, right_shift)
 
+BOOST_LAMBDA2_PREFIX_FN(+, unary_plus)
+
 // operators
 
 template<class T> using remove_cvref_t = std::remove_cv_t<std::remove_reference_t<T>>;
@@ -147,6 +149,8 @@ BOOST_LAMBDA2_UNARY_LAMBDA(~, std::bit_not<>)
 
 BOOST_LAMBDA2_BINARY_LAMBDA(<<, lambda2_detail::left_shift)
 BOOST_LAMBDA2_BINARY_LAMBDA(>>, lambda2_detail::right_shift)
+
+BOOST_LAMBDA2_UNARY_LAMBDA(+, lambda2_detail::unary_plus)
 
 } // namespace lambda2
 } // namespace boost
