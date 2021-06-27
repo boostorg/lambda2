@@ -18,6 +18,40 @@ namespace boost
 namespace lambda2
 {
 
+template<int I> struct lambda2_arg
+{
+};
+
+#if defined(__cpp_inline_variables) && __cpp_inline_variables >= 201606L
+# define BOOST_LAMBDA2_INLINE_VAR inline
+#else
+# define BOOST_LAMBDA2_INLINE_VAR
+#endif
+
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<1> _1;
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<2> _2;
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<3> _3;
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<4> _4;
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<5> _5;
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<6> _6;
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<7> _7;
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<8> _8;
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<9> _9;
+
+#undef BOOST_LAMBDA2_INLINE_VAR
+
+} // namespace lambda2
+} // namespace boost
+
+template<int I> struct std::is_placeholder< boost::lambda2::lambda2_arg<I> >: std::integral_constant<int, I>
+{
+};
+
+namespace boost
+{
+namespace lambda2
+{
+
 namespace lambda2_detail
 {
 
@@ -70,8 +104,6 @@ BOOST_LAMBDA2_BINARY_LAMBDA(&, std::bit_and<>)
 BOOST_LAMBDA2_BINARY_LAMBDA(|, std::bit_or<>)
 BOOST_LAMBDA2_BINARY_LAMBDA(^, std::bit_xor<>)
 BOOST_LAMBDA2_UNARY_LAMBDA(~, std::bit_not<>)
-
-using namespace std::placeholders;
 
 } // namespace lambda2
 } // namespace boost
