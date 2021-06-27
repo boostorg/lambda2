@@ -2,6 +2,10 @@
 // Distributed under the Boost Software License, Version 1.0.
 // https://www.boost.org/LICENSE_1_0.txt
 
+#if defined(_MSC_VER) && _MSC_VER == 1900
+# pragma warning(disable: 4552) // '<<': operator has no effect; expected operator with side-effect
+#endif
+
 #include <boost/lambda2.hpp>
 #include <boost/core/lightweight_test.hpp>
 
@@ -55,6 +59,9 @@ int main()
     BOOST_TEST_EQ( (_1 / _2)( 0, 1 ), 0 / 1 );
 
 #endif
+
+    TEST_BINARY(<<)
+    TEST_BINARY(>>)
 
     return boost::report_errors();
 }

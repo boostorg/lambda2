@@ -18,6 +18,8 @@ namespace boost
 namespace lambda2
 {
 
+// placeholders
+
 template<int I> struct lambda2_arg
 {
 };
@@ -55,6 +57,40 @@ namespace lambda2
 namespace lambda2_detail
 {
 
+// additional function objects
+
+#define BOOST_LAMBDA2_PREFIX_FN(op, fn) \
+    struct fn \
+    { \
+        template<class T> decltype(auto) operator()(T&& t) const \
+        { \
+            return op std::forward<T>(t); \
+        } \
+    };
+
+#define BOOST_LAMBDA2_POSTFIX_FN(op, fn) \
+    struct fn \
+    { \
+        template<class T> decltype(auto) operator()(T&& t) const \
+        { \
+            return std::forward<T>(t) op; \
+        } \
+    };
+
+#define BOOST_LAMBDA2_BINARY_FN(op, fn) \
+    struct fn \
+    { \
+        template<class T1, class T2> decltype(auto) operator()(T1&& t1, T2&& t2) const \
+        { \
+            return std::forward<T1>(t1) op std::forward<T2>(t2); \
+        } \
+    };
+
+BOOST_LAMBDA2_BINARY_FN(<<, left_shift)
+BOOST_LAMBDA2_BINARY_FN(>>, right_shift)
+
+// operators
+
 template<class T> using remove_cvref_t = std::remove_cv_t<std::remove_reference_t<T>>;
 
 template<class T, class T2 = remove_cvref_t<T>> using is_lambda_expression =
@@ -82,6 +118,8 @@ template<class A, class B> using enable_binary_lambda =
         return std::bind( fn(), std::forward<A>(a), std::forward<B>(b) ); \
     }
 
+// standard
+
 BOOST_LAMBDA2_BINARY_LAMBDA(+, std::plus<>)
 BOOST_LAMBDA2_BINARY_LAMBDA(-, std::minus<>)
 BOOST_LAMBDA2_BINARY_LAMBDA(*, std::multiplies<>)
@@ -104,6 +142,11 @@ BOOST_LAMBDA2_BINARY_LAMBDA(&, std::bit_and<>)
 BOOST_LAMBDA2_BINARY_LAMBDA(|, std::bit_or<>)
 BOOST_LAMBDA2_BINARY_LAMBDA(^, std::bit_xor<>)
 BOOST_LAMBDA2_UNARY_LAMBDA(~, std::bit_not<>)
+
+// additional
+
+BOOST_LAMBDA2_BINARY_LAMBDA(<<, lambda2_detail::left_shift)
+BOOST_LAMBDA2_BINARY_LAMBDA(>>, lambda2_detail::right_shift)
 
 } // namespace lambda2
 } // namespace boost
