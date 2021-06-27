@@ -9,6 +9,10 @@
 #include <type_traits>
 #include <utility>
 
+// Same format as BOOST_VERSION:
+//   major * 100000 + minor * 100 + patch
+#define BOOST_LAMBDA2_VERSION 107700
+
 namespace boost
 {
 namespace lambda2

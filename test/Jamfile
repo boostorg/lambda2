@@ -16,5 +16,5 @@ project : requirements
   <toolset>gcc:<warnings-as-errors>on ;
 
 run quick.cpp ;
-
 run lambda2_test.cpp ;
+run version.cpp ;
