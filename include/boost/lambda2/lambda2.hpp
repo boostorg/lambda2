@@ -64,7 +64,7 @@ namespace lambda2_detail
 
 // additional function objects
 
-#define BOOST_LAMBDA2_PREFIX_FN(op, fn) \
+#define BOOST_LAMBDA2_UNARY_FN(op, fn) \
     struct fn \
     { \
         template<class T> decltype(auto) operator()(T&& t) const \
@@ -94,8 +94,8 @@ namespace lambda2_detail
 BOOST_LAMBDA2_BINARY_FN(<<, left_shift)
 BOOST_LAMBDA2_BINARY_FN(>>, right_shift)
 
-BOOST_LAMBDA2_PREFIX_FN(+, unary_plus)
-BOOST_LAMBDA2_PREFIX_FN(*, dereference)
+BOOST_LAMBDA2_UNARY_FN(+, unary_plus)
+BOOST_LAMBDA2_UNARY_FN(*, dereference)
 
 // operators
 
