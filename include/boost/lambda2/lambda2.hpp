@@ -90,6 +90,7 @@ BOOST_LAMBDA2_BINARY_FN(<<, left_shift)
 BOOST_LAMBDA2_BINARY_FN(>>, right_shift)
 
 BOOST_LAMBDA2_PREFIX_FN(+, unary_plus)
+BOOST_LAMBDA2_PREFIX_FN(*, dereference)
 
 // operators
 
@@ -151,6 +152,7 @@ BOOST_LAMBDA2_BINARY_LAMBDA(<<, lambda2_detail::left_shift)
 BOOST_LAMBDA2_BINARY_LAMBDA(>>, lambda2_detail::right_shift)
 
 BOOST_LAMBDA2_UNARY_LAMBDA(+, lambda2_detail::unary_plus)
+BOOST_LAMBDA2_UNARY_LAMBDA(*, lambda2_detail::dereference)
 
 } // namespace lambda2
 } // namespace boost
