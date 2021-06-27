@@ -38,41 +38,38 @@ template<class A, class B> using enable_binary_lambda =
     template<class A, class = detail::enable_unary_lambda<A>> \
     auto operator op( A&& a ) \
     { \
-        return std::bind( std::fn<>(), std::forward<A>(a) ); \
+        return std::bind( fn(), std::forward<A>(a) ); \
     }
 
 #define BOOST_LAMBDA2_BINARY_LAMBDA(op, fn) \
     template<class A, class B, class = detail::enable_binary_lambda<A, B>> \
     auto operator op( A&& a, B&& b ) \
     { \
-        return std::bind( std::fn<>(), std::forward<A>(a), std::forward<B>(b) ); \
+        return std::bind( fn(), std::forward<A>(a), std::forward<B>(b) ); \
     }
 
-BOOST_LAMBDA2_BINARY_LAMBDA(+, plus)
-BOOST_LAMBDA2_BINARY_LAMBDA(-, minus)
-BOOST_LAMBDA2_BINARY_LAMBDA(*, multiplies)
-BOOST_LAMBDA2_BINARY_LAMBDA(/, divides)
-BOOST_LAMBDA2_BINARY_LAMBDA(%, modulus)
-BOOST_LAMBDA2_UNARY_LAMBDA(-, negate)
+BOOST_LAMBDA2_BINARY_LAMBDA(+, std::plus<>)
+BOOST_LAMBDA2_BINARY_LAMBDA(-, std::minus<>)
+BOOST_LAMBDA2_BINARY_LAMBDA(*, std::multiplies<>)
+BOOST_LAMBDA2_BINARY_LAMBDA(/, std::divides<>)
+BOOST_LAMBDA2_BINARY_LAMBDA(%, std::modulus<>)
+BOOST_LAMBDA2_UNARY_LAMBDA(-, std::negate<>)
 
-BOOST_LAMBDA2_BINARY_LAMBDA(==, equal_to)
-BOOST_LAMBDA2_BINARY_LAMBDA(!=, not_equal_to)
-BOOST_LAMBDA2_BINARY_LAMBDA(>, greater)
-BOOST_LAMBDA2_BINARY_LAMBDA(<, less)
-BOOST_LAMBDA2_BINARY_LAMBDA(>=, greater_equal)
-BOOST_LAMBDA2_BINARY_LAMBDA(<=, less_equal)
+BOOST_LAMBDA2_BINARY_LAMBDA(==, std::equal_to<>)
+BOOST_LAMBDA2_BINARY_LAMBDA(!=, std::not_equal_to<>)
+BOOST_LAMBDA2_BINARY_LAMBDA(>, std::greater<>)
+BOOST_LAMBDA2_BINARY_LAMBDA(<, std::less<>)
+BOOST_LAMBDA2_BINARY_LAMBDA(>=, std::greater_equal<>)
+BOOST_LAMBDA2_BINARY_LAMBDA(<=, std::less_equal<>)
 
-BOOST_LAMBDA2_BINARY_LAMBDA(&&, logical_and)
-BOOST_LAMBDA2_BINARY_LAMBDA(||, logical_or)
-BOOST_LAMBDA2_UNARY_LAMBDA(!, logical_not)
+BOOST_LAMBDA2_BINARY_LAMBDA(&&, std::logical_and<>)
+BOOST_LAMBDA2_BINARY_LAMBDA(||, std::logical_or<>)
+BOOST_LAMBDA2_UNARY_LAMBDA(!, std::logical_not<>)
 
-BOOST_LAMBDA2_BINARY_LAMBDA(&, bit_and)
-BOOST_LAMBDA2_BINARY_LAMBDA(|, bit_or)
-BOOST_LAMBDA2_BINARY_LAMBDA(^, bit_xor)
-BOOST_LAMBDA2_UNARY_LAMBDA(~, bit_not)
-
-#undef BOOST_LAMBDA2_UNARY_LAMBDA
-#undef BOOST_LAMBDA2_BINARY_LAMBDA
+BOOST_LAMBDA2_BINARY_LAMBDA(&, std::bit_and<>)
+BOOST_LAMBDA2_BINARY_LAMBDA(|, std::bit_or<>)
+BOOST_LAMBDA2_BINARY_LAMBDA(^, std::bit_xor<>)
+BOOST_LAMBDA2_UNARY_LAMBDA(~, std::bit_not<>)
 
 using namespace std::placeholders;
 
