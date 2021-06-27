@@ -18,3 +18,4 @@ project : requirements
 run quick.cpp ;
 run lambda2_test.cpp ;
 run version.cpp ;
+run lookup_problem.cpp ;
