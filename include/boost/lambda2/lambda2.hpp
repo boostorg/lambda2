@@ -97,6 +97,12 @@ BOOST_LAMBDA2_BINARY_FN(>>, right_shift)
 BOOST_LAMBDA2_UNARY_FN(+, unary_plus)
 BOOST_LAMBDA2_UNARY_FN(*, dereference)
 
+BOOST_LAMBDA2_UNARY_FN(++, increment)
+BOOST_LAMBDA2_UNARY_FN(--, decrement)
+
+BOOST_LAMBDA2_POSTFIX_FN(++, postfix_increment)
+BOOST_LAMBDA2_POSTFIX_FN(--, postfix_decrement)
+
 // operators
 
 template<class T> using remove_cvref_t = std::remove_cv_t<std::remove_reference_t<T>>;
@@ -115,6 +121,13 @@ template<class A, class B> using enable_binary_lambda =
 #define BOOST_LAMBDA2_UNARY_LAMBDA(op, fn) \
     template<class A, class = lambda2_detail::enable_unary_lambda<A>> \
     auto operator op( A&& a ) \
+    { \
+        return std::bind( fn(), std::forward<A>(a) ); \
+    }
+
+#define BOOST_LAMBDA2_POSTFIX_LAMBDA(op, fn) \
+    template<class A, class = lambda2_detail::enable_unary_lambda<A>> \
+    auto operator op( A&& a, int ) \
     { \
         return std::bind( fn(), std::forward<A>(a) ); \
     }
@@ -158,6 +171,12 @@ BOOST_LAMBDA2_BINARY_LAMBDA(>>, lambda2_detail::right_shift)
 
 BOOST_LAMBDA2_UNARY_LAMBDA(+, lambda2_detail::unary_plus)
 BOOST_LAMBDA2_UNARY_LAMBDA(*, lambda2_detail::dereference)
+
+BOOST_LAMBDA2_UNARY_LAMBDA(++, lambda2_detail::increment)
+BOOST_LAMBDA2_UNARY_LAMBDA(--, lambda2_detail::decrement)
+
+BOOST_LAMBDA2_POSTFIX_LAMBDA(++, lambda2_detail::postfix_increment)
+BOOST_LAMBDA2_POSTFIX_LAMBDA(--, lambda2_detail::postfix_decrement)
 
 } // namespace lambda2
 } // namespace boost
