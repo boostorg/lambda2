@@ -8,6 +8,8 @@
 #include <functional>
 #include <type_traits>
 #include <utility>
+#include <tuple>
+#include <cstddef>
 
 // Same format as BOOST_VERSION:
 //   major * 100000 + minor * 100 + patch
@@ -22,6 +24,10 @@ namespace lambda2
 
 template<int I> struct lambda2_arg
 {
+    template<class... A> decltype(auto) operator()( A&&... a ) const noexcept
+    {
+        return std::get<std::size_t{I-1}>( std::tuple<A&&...>( std::forward<A>(a)... ) );
+    }
 };
 
 #if defined(__cpp_inline_variables) && __cpp_inline_variables >= 201606L

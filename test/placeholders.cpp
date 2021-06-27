@@ -25,5 +25,24 @@ int main()
     BOOST_TEST_EQ( std::bind(f, _8)( 1, 2, 3, 4, 5, 6, 7, 8 ), 8 );
     BOOST_TEST_EQ( std::bind(f, _9)( 1, 2, 3, 4, 5, 6, 7, 8, 9 ), 9 );
 
+    BOOST_TEST_EQ( _1( 1 ), 1 );
+    BOOST_TEST_EQ( _2( 1, 2 ), 2 );
+    BOOST_TEST_EQ( _3( 1, 2, 3 ), 3 );
+    BOOST_TEST_EQ( _4( 1, 2, 3, 4 ), 4 );
+    BOOST_TEST_EQ( _5( 1, 2, 3, 4, 5 ), 5 );
+    BOOST_TEST_EQ( _6( 1, 2, 3, 4, 5, 6 ), 6 );
+    BOOST_TEST_EQ( _7( 1, 2, 3, 4, 5, 6, 7 ), 7 );
+    BOOST_TEST_EQ( _8( 1, 2, 3, 4, 5, 6, 7, 8 ), 8 );
+    BOOST_TEST_EQ( _9( 1, 2, 3, 4, 5, 6, 7, 8, 9 ), 9 );
+
+    BOOST_TEST_EQ( _1( 1, 2, 3, 4, 5, 6, 7, 8, 9 ), 1 );
+    BOOST_TEST_EQ( _2( 1, 2, 3, 4, 5, 6, 7, 8, 9 ), 2 );
+    BOOST_TEST_EQ( _3( 1, 2, 3, 4, 5, 6, 7, 8, 9 ), 3 );
+    BOOST_TEST_EQ( _4( 1, 2, 3, 4, 5, 6, 7, 8, 9 ), 4 );
+    BOOST_TEST_EQ( _5( 1, 2, 3, 4, 5, 6, 7, 8, 9 ), 5 );
+    BOOST_TEST_EQ( _6( 1, 2, 3, 4, 5, 6, 7, 8, 9 ), 6 );
+    BOOST_TEST_EQ( _7( 1, 2, 3, 4, 5, 6, 7, 8, 9 ), 7 );
+    BOOST_TEST_EQ( _8( 1, 2, 3, 4, 5, 6, 7, 8, 9 ), 8 );
+
     return boost::report_errors();
 }
