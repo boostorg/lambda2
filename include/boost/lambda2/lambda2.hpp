@@ -30,15 +30,15 @@ template<int I> struct lambda2_arg
 # define BOOST_LAMBDA2_INLINE_VAR
 #endif
 
-BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<1> _1;
-BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<2> _2;
-BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<3> _3;
-BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<4> _4;
-BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<5> _5;
-BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<6> _6;
-BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<7> _7;
-BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<8> _8;
-BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<9> _9;
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<1> _1{};
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<2> _2{};
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<3> _3{};
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<4> _4{};
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<5> _5{};
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<6> _6{};
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<7> _7{};
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<8> _8{};
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<9> _9{};
 
 #undef BOOST_LAMBDA2_INLINE_VAR
 
