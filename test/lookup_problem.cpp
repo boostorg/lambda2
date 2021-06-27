@@ -19,6 +19,6 @@ namespace N
 
 int main()
 {
-    BOOST_TEST_EQ( plus_one( 4 ), 5 );
+    BOOST_TEST_EQ( N::plus_one( 4 ), 5 );
     return boost::report_errors();
 }
