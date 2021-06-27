@@ -127,6 +127,17 @@ BOOST_LAMBDA2_UNARY_FN(--, decrement)
 BOOST_LAMBDA2_POSTFIX_FN(++, postfix_increment)
 BOOST_LAMBDA2_POSTFIX_FN(--, postfix_decrement)
 
+BOOST_LAMBDA2_BINARY_FN(+=, plus_equal)
+BOOST_LAMBDA2_BINARY_FN(-=, minus_equal)
+BOOST_LAMBDA2_BINARY_FN(*=, multiplies_equal)
+BOOST_LAMBDA2_BINARY_FN(/=, divides_equal)
+BOOST_LAMBDA2_BINARY_FN(%=, modulus_equal)
+BOOST_LAMBDA2_BINARY_FN(&=, bit_and_equal)
+BOOST_LAMBDA2_BINARY_FN(|=, bit_or_equal)
+BOOST_LAMBDA2_BINARY_FN(^=, bit_xor_equal)
+BOOST_LAMBDA2_BINARY_FN(<<=, left_shift_equal)
+BOOST_LAMBDA2_BINARY_FN(>>=, right_shift_equal)
+
 // operators
 
 template<class T> using remove_cvref_t = std::remove_cv_t<std::remove_reference_t<T>>;
@@ -201,6 +212,19 @@ BOOST_LAMBDA2_UNARY_LAMBDA(--, lambda2_detail::decrement)
 
 BOOST_LAMBDA2_POSTFIX_LAMBDA(++, lambda2_detail::postfix_increment)
 BOOST_LAMBDA2_POSTFIX_LAMBDA(--, lambda2_detail::postfix_decrement)
+
+// compound assignment
+
+BOOST_LAMBDA2_BINARY_LAMBDA(+=, lambda2_detail::plus_equal)
+BOOST_LAMBDA2_BINARY_LAMBDA(-=, lambda2_detail::minus_equal)
+BOOST_LAMBDA2_BINARY_LAMBDA(*=, lambda2_detail::multiplies_equal)
+BOOST_LAMBDA2_BINARY_LAMBDA(/=, lambda2_detail::divides_equal)
+BOOST_LAMBDA2_BINARY_LAMBDA(%=, lambda2_detail::modulus_equal)
+BOOST_LAMBDA2_BINARY_LAMBDA(&=, lambda2_detail::bit_and_equal)
+BOOST_LAMBDA2_BINARY_LAMBDA(|=, lambda2_detail::bit_or_equal)
+BOOST_LAMBDA2_BINARY_LAMBDA(^=, lambda2_detail::bit_xor_equal)
+BOOST_LAMBDA2_BINARY_LAMBDA(<<=, lambda2_detail::left_shift_equal)
+BOOST_LAMBDA2_BINARY_LAMBDA(>>=, lambda2_detail::right_shift_equal)
 
 } // namespace lambda2
 } // namespace boost
