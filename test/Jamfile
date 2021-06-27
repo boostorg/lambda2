@@ -20,3 +20,4 @@ run lambda2_test.cpp ;
 run version.cpp ;
 run lookup_problem.cpp ;
 run dereference.cpp ;
+run placeholders.cpp ;
