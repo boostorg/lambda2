@@ -20,8 +20,8 @@ environment:
       TOOLSET: msvc-14.1,clang-win
       CXXSTD: 14,17
     - APPVEYOR_BUILD_WORKER_IMAGE: Visual Studio 2019
-      TOOLSET: msvc-14.2
-      CXXSTD: 14,17
+      TOOLSET: msvc-14.2,clang-win
+      CXXSTD: 14,17,latest
 
 install:
   - set BOOST_BRANCH=develop
