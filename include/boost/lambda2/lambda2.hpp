@@ -18,7 +18,7 @@ namespace boost
 namespace lambda2
 {
 
-namespace detail
+namespace lambda2_detail
 {
 
 template<class T> using remove_cvref_t = std::remove_cv_t<std::remove_reference_t<T>>;
@@ -32,17 +32,17 @@ template<class A> using enable_unary_lambda =
 template<class A, class B> using enable_binary_lambda =
     std::enable_if_t<is_lambda_expression<A>::value || is_lambda_expression<B>::value>;
 
-} // namespace detail
+} // namespace lambda2_detail
 
 #define BOOST_LAMBDA2_UNARY_LAMBDA(op, fn) \
-    template<class A, class = detail::enable_unary_lambda<A>> \
+    template<class A, class = lambda2_detail::enable_unary_lambda<A>> \
     auto operator op( A&& a ) \
     { \
         return std::bind( fn(), std::forward<A>(a) ); \
     }
 
 #define BOOST_LAMBDA2_BINARY_LAMBDA(op, fn) \
-    template<class A, class B, class = detail::enable_binary_lambda<A, B>> \
+    template<class A, class B, class = lambda2_detail::enable_binary_lambda<A, B>> \
     auto operator op( A&& a, B&& b ) \
     { \
         return std::bind( fn(), std::forward<A>(a), std::forward<B>(b) ); \
