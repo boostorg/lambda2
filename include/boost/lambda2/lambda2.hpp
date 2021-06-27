@@ -45,9 +45,14 @@ BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<9> _9{};
 } // namespace lambda2
 } // namespace boost
 
-template<int I> struct std::is_placeholder< boost::lambda2::lambda2_arg<I> >: std::integral_constant<int, I>
+namespace std
+{
+
+template<int I> struct is_placeholder< boost::lambda2::lambda2_arg<I> >: integral_constant<int, I>
 {
 };
+
+} // namespace std
 
 namespace boost
 {
