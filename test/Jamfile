@@ -22,3 +22,4 @@ run lookup_problem.cpp ;
 run dereference.cpp ;
 run placeholders.cpp ;
 run increment.cpp ;
+run subscript.cpp ;

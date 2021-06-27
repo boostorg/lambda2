@@ -20,6 +20,19 @@ namespace boost
 namespace lambda2
 {
 
+namespace lambda2_detail
+{
+
+struct subscript
+{
+    template<class T1, class T2> decltype(auto) operator()(T1&& t1, T2&& t2) const
+    {
+        return std::forward<T1>(t1)[ std::forward<T2>(t2) ];
+    }
+};
+
+} // namespace lambda2_detail
+
 // placeholders
 
 template<int I> struct lambda2_arg
@@ -27,6 +40,11 @@ template<int I> struct lambda2_arg
     template<class... A> decltype(auto) operator()( A&&... a ) const noexcept
     {
         return std::get<std::size_t{I-1}>( std::tuple<A&&...>( std::forward<A>(a)... ) );
+    }
+
+    template<class T> auto operator[]( T&& t ) const
+    {
+        return std::bind( lambda2_detail::subscript(), *this, std::forward<T>( t ) );
     }
 };
 
