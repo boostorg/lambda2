@@ -24,3 +24,5 @@ run placeholders.cpp ;
 run increment.cpp ;
 run subscript.cpp ;
 run compound.cpp ;
+run stream_insert.cpp ;
+run stream_extract.cpp ;

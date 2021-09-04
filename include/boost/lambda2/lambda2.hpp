@@ -10,6 +10,7 @@
 #include <utility>
 #include <tuple>
 #include <cstddef>
+#include <iosfwd>
 
 // Same format as BOOST_VERSION:
 //   major * 100000 + minor * 100 + patch
@@ -201,9 +202,6 @@ BOOST_LAMBDA2_UNARY_LAMBDA(~, std::bit_not<>)
 
 // additional
 
-BOOST_LAMBDA2_BINARY_LAMBDA(<<, lambda2_detail::left_shift)
-BOOST_LAMBDA2_BINARY_LAMBDA(>>, lambda2_detail::right_shift)
-
 BOOST_LAMBDA2_UNARY_LAMBDA(+, lambda2_detail::unary_plus)
 BOOST_LAMBDA2_UNARY_LAMBDA(*, lambda2_detail::dereference)
 
@@ -225,6 +223,38 @@ BOOST_LAMBDA2_BINARY_LAMBDA(|=, lambda2_detail::bit_or_equal)
 BOOST_LAMBDA2_BINARY_LAMBDA(^=, lambda2_detail::bit_xor_equal)
 BOOST_LAMBDA2_BINARY_LAMBDA(<<=, lambda2_detail::left_shift_equal)
 BOOST_LAMBDA2_BINARY_LAMBDA(>>=, lambda2_detail::right_shift_equal)
+
+// operator<<
+
+template<class A, class = std::enable_if_t<!std::is_convertible<A&, std::ios_base&>::value>,
+    class B, class = lambda2_detail::enable_binary_lambda<A, B>>
+auto operator<<( A&& a, B&& b )
+{
+    return std::bind( lambda2_detail::left_shift(), std::forward<A>(a), std::forward<B>(b) ); \
+}
+
+template<class A, class = std::enable_if_t<std::is_convertible<A&, std::ios_base&>::value>,
+    class B, class = lambda2_detail::enable_unary_lambda<B>>
+auto operator<<( A& a, B&& b )
+{
+    return std::bind( lambda2_detail::left_shift(), std::ref(a), std::forward<B>(b) );
+}
+
+// operator>>
+
+template<class A, class = std::enable_if_t<!std::is_convertible<A&, std::ios_base&>::value>,
+    class B, class = lambda2_detail::enable_binary_lambda<A, B>>
+auto operator>>( A&& a, B&& b )
+{
+    return std::bind( lambda2_detail::right_shift(), std::forward<A>(a), std::forward<B>(b) ); \
+}
+
+template<class A, class = std::enable_if_t<std::is_convertible<A&, std::ios_base&>::value>,
+    class B, class = lambda2_detail::enable_unary_lambda<B>>
+auto operator>>( A& a, B&& b )
+{
+    return std::bind( lambda2_detail::right_shift(), std::ref(a), std::forward<B>(b) );
+}
 
 } // namespace lambda2
 } // namespace boost
