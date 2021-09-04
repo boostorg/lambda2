@@ -5,7 +5,7 @@ described in [this post](https://pdimov.github.io/blog/2020/07/22/a-c14-lambda-l
 
 It has no dependencies and consists of a [single header](include/boost/lambda2/lambda2.hpp).
 
-See [the documentation](https://www.boost.org/doc/libs/develop/libs/lambda2/) for more information.
+See [the documentation](https://www.boost.org/libs/lambda2/) for more information.
 
 ## Supported Compilers
 
@@ -13,7 +13,7 @@ See [the documentation](https://www.boost.org/doc/libs/develop/libs/lambda2/) fo
 * clang++ 3.5 or later with `-std=c++14` or above
 * Visual Studio 2015, 2017, 2019
 
-Tested on [Travis](https://travis-ci.org/github/pdimov/lambda2/) and
+Tested on [Github Actions](https://github.com/boostorg/lambda2/actions) and
 [Appveyor](https://ci.appveyor.com/project/pdimov/lambda2).
 
 ## License
