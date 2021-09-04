@@ -66,7 +66,7 @@ None. A single, self-contained header.
 ## Supported Compilers
 
 * GCC 5 or later with `-std=c++14` or above
-* Clang 3.5 or later with `-std=c++14` or above
+* Clang 3.9 or later with `-std=c++14` or above
 * Visual Studio 2015, 2017, 2019
 
 Tested on https://github.com/boostorg/lambda2/actions[Github Actions] and

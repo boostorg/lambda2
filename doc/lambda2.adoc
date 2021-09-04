@@ -14,6 +14,7 @@ Peter Dimov
 :leveloffset: +1
 
 include::lambda2/overview.adoc[]
+include::lambda2/changelog.adoc[]
 include::lambda2/reference.adoc[]
 include::lambda2/copyright.adoc[]
 
