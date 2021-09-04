@@ -10,7 +10,7 @@ See [the documentation](https://www.boost.org/libs/lambda2/) for more informatio
 ## Supported Compilers
 
 * g++ 5 or later with `-std=c++14` or above
-* clang++ 3.5 or later with `-std=c++14` or above
+* clang++ 3.9 or later with `-std=c++14` or above
 * Visual Studio 2015, 2017, 2019
 
 Tested on [Github Actions](https://github.com/boostorg/lambda2/actions) and
