@@ -232,7 +232,7 @@ template<class A, class = std::enable_if_t<!lambda2_detail::is_stream<A>::value>
     class B, class = lambda2_detail::enable_binary_lambda<A, B>>
 auto operator<<( A&& a, B&& b )
 {
-    return std::bind( lambda2_detail::left_shift(), std::forward<A>(a), std::forward<B>(b) ); \
+    return std::bind( lambda2_detail::left_shift(), std::forward<A>(a), std::forward<B>(b) );
 }
 
 template<class A, class = std::enable_if_t<lambda2_detail::is_stream<A>::value>,
@@ -248,7 +248,7 @@ template<class A, class = std::enable_if_t<!lambda2_detail::is_stream<A>::value>
     class B, class = lambda2_detail::enable_binary_lambda<A, B>>
 auto operator>>( A&& a, B&& b )
 {
-    return std::bind( lambda2_detail::right_shift(), std::forward<A>(a), std::forward<B>(b) ); \
+    return std::bind( lambda2_detail::right_shift(), std::forward<A>(a), std::forward<B>(b) );
 }
 
 template<class A, class = std::enable_if_t<lambda2_detail::is_stream<A>::value>,
