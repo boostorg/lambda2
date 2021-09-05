@@ -258,6 +258,14 @@ auto operator>>( A& a, B&& b )
     return std::bind( lambda2_detail::right_shift(), std::ref(a), std::forward<B>(b) );
 }
 
+// operator->*
+
+template<class A, class B, class = lambda2_detail::enable_unary_lambda<A>>
+auto operator->*( A&& a, B&& b )
+{
+    return std::bind( std::forward<B>(b), std::forward<A>(a) );
+}
+
 } // namespace lambda2
 } // namespace boost
 

@@ -26,3 +26,4 @@ run subscript.cpp ;
 run compound.cpp ;
 run stream_insert.cpp ;
 run stream_extract.cpp ;
+run project.cpp ;
