@@ -152,6 +152,8 @@ template<class A> using enable_unary_lambda =
 template<class A, class B> using enable_binary_lambda =
     std::enable_if_t<is_lambda_expression<A>::value || is_lambda_expression<B>::value>;
 
+template<class T> using is_stream = std::is_base_of<std::ios_base, remove_cvref_t<T>>;
+
 } // namespace lambda2_detail
 
 #define BOOST_LAMBDA2_UNARY_LAMBDA(op, fn) \
@@ -226,14 +228,14 @@ BOOST_LAMBDA2_BINARY_LAMBDA(>>=, lambda2_detail::right_shift_equal)
 
 // operator<<
 
-template<class A, class = std::enable_if_t<!std::is_convertible<A&, std::ios_base&>::value>,
+template<class A, class = std::enable_if_t<!lambda2_detail::is_stream<A>::value>,
     class B, class = lambda2_detail::enable_binary_lambda<A, B>>
 auto operator<<( A&& a, B&& b )
 {
     return std::bind( lambda2_detail::left_shift(), std::forward<A>(a), std::forward<B>(b) ); \
 }
 
-template<class A, class = std::enable_if_t<std::is_convertible<A&, std::ios_base&>::value>,
+template<class A, class = std::enable_if_t<lambda2_detail::is_stream<A>::value>,
     class B, class = lambda2_detail::enable_unary_lambda<B>>
 auto operator<<( A& a, B&& b )
 {
@@ -242,14 +244,14 @@ auto operator<<( A& a, B&& b )
 
 // operator>>
 
-template<class A, class = std::enable_if_t<!std::is_convertible<A&, std::ios_base&>::value>,
+template<class A, class = std::enable_if_t<!lambda2_detail::is_stream<A>::value>,
     class B, class = lambda2_detail::enable_binary_lambda<A, B>>
 auto operator>>( A&& a, B&& b )
 {
     return std::bind( lambda2_detail::right_shift(), std::forward<A>(a), std::forward<B>(b) ); \
 }
 
-template<class A, class = std::enable_if_t<std::is_convertible<A&, std::ios_base&>::value>,
+template<class A, class = std::enable_if_t<lambda2_detail::is_stream<A>::value>,
     class B, class = lambda2_detail::enable_unary_lambda<B>>
 auto operator>>( A& a, B&& b )
 {
