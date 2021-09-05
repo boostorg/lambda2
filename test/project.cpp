@@ -42,6 +42,13 @@ int main()
         BOOST_TEST_EQ( (_1->*&X::f1)( x ), 0 );
         BOOST_TEST_EQ( (_1->*&X::f2)( x ), 0 );
 
+#if defined(_LIBCPP_VERSION)
+
+        // https://bugs.llvm.org/show_bug.cgi?id=51753
+        using std::placeholders::_1;
+
+#endif
+
         BOOST_TEST_EQ( (_1->*&X::m1 += 1)( x ), 1 );
         BOOST_TEST_EQ( (_1->*&X::m2 += 2)( x ), 2 );
 
