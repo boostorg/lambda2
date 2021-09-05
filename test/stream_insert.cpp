@@ -7,7 +7,18 @@
 #include <sstream>
 #include <string>
 
-template<class T> std::string to_string( T const& t )
+template<class T> std::string to_string_1( T const& t )
+{
+    using namespace boost::lambda2;
+
+    std::ostringstream os;
+
+    ( std::ref( os ) << _1 )( t );
+
+    return os.str();
+}
+
+template<class T> std::string to_string_2( T const& t )
 {
     using namespace boost::lambda2;
 
@@ -20,7 +31,8 @@ template<class T> std::string to_string( T const& t )
 
 int main()
 {
-    BOOST_TEST_EQ( to_string( 123 ), "123" );
+    BOOST_TEST_EQ( to_string_1( 123 ), "123" );
+    BOOST_TEST_EQ( to_string_2( 456 ), "456" );
 
     return boost::report_errors();
 }
