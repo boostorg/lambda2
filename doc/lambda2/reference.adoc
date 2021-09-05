@@ -21,14 +21,14 @@ namespace lambda2 {
 template<int I> struct lambda2_arg;
 
 inline constexpr lambda2_arg<1> _1{};
-inline constexpr lambda2_arg<1> _2{};
-inline constexpr lambda2_arg<1> _3{};
-inline constexpr lambda2_arg<1> _4{};
-inline constexpr lambda2_arg<1> _5{};
-inline constexpr lambda2_arg<1> _6{};
-inline constexpr lambda2_arg<1> _7{};
-inline constexpr lambda2_arg<1> _8{};
-inline constexpr lambda2_arg<1> _9{};
+inline constexpr lambda2_arg<2> _2{};
+inline constexpr lambda2_arg<3> _3{};
+inline constexpr lambda2_arg<4> _4{};
+inline constexpr lambda2_arg<5> _5{};
+inline constexpr lambda2_arg<6> _6{};
+inline constexpr lambda2_arg<7> _7{};
+inline constexpr lambda2_arg<8> _8{};
+inline constexpr lambda2_arg<9> _9{};
 
 // arithmetic operators
 
