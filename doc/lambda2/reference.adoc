@@ -86,6 +86,10 @@ template<class A, class B> auto operator^=( A && a, B && b );
 template<class A, class B> auto operator<<=( A && a, B && b );
 template<class A, class B> auto operator>>=( A && a, B && b );
 
+// additional binary operators
+
+template<class A, class B> auto operator->*( A && a, B && b );
+
 } // namespace lambda2
 } // namespace boost
 ```
@@ -388,3 +392,16 @@ template<class A, class B> auto operator@=( A && a, B && b );
 +
 Returns: :: `std::bind( fn, std::forward<A>(a), std::forward<B>(b) );`,
   where `fn` is a function object such that `fn(x, y)` returns `x @= y`.
+
+### Additional Binary Operators
+
+```
+template<class A, class B> auto operator->*( A && a, B && b );
+```
+[none]
+* {blank}
++
+Returns: :: `std::bind( std::forward<B>(b), std::forward<A>(a) );`
+Notes: :: This operator is intended to be used with "projection" function
+  objects such as member pointers or member functions taking zero arguments,
+  as in `_1\->*&X::m` or `_1\->*&X::f`.
