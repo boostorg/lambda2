@@ -63,6 +63,9 @@ int main()
 
         BOOST_TEST_EQ( (_1->*&std::pair<int, int>::first)( x ), 1 );
         BOOST_TEST_EQ( (_1->*&std::pair<int, int>::second)( x ), 2 );
+
+        BOOST_TEST_EQ( (_1->*first)( x ), 1 );
+        BOOST_TEST_EQ( (_1->*second)( x ), 2 );
     }
 
     return boost::report_errors();

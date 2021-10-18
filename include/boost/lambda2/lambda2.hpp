@@ -32,6 +32,14 @@ struct subscript
     }
 };
 
+template<int I> struct get
+{
+    template<class T> decltype(auto) operator()( T&& t ) const
+    {
+        return std::get<I>( std::forward<T>(t) );
+    }
+};
+
 } // namespace lambda2_detail
 
 // placeholders
@@ -64,6 +72,11 @@ BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<6> _6{};
 BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<7> _7{};
 BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<8> _8{};
 BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_arg<9> _9{};
+
+// first, second
+
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_detail::get<0> first{};
+BOOST_LAMBDA2_INLINE_VAR constexpr lambda2_detail::get<1> second{};
 
 #undef BOOST_LAMBDA2_INLINE_VAR
 
