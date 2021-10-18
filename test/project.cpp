@@ -64,6 +64,13 @@ int main()
         BOOST_TEST_EQ( (_1->*&std::pair<int, int>::first)( x ), 1 );
         BOOST_TEST_EQ( (_1->*&std::pair<int, int>::second)( x ), 2 );
 
+#if defined(_LIBCPP_VERSION)
+
+        // https://bugs.llvm.org/show_bug.cgi?id=51753
+        using std::placeholders::_1;
+
+#endif
+
         BOOST_TEST_EQ( (_1->*first)( x ), 1 );
         BOOST_TEST_EQ( (_1->*second)( x ), 2 );
     }
