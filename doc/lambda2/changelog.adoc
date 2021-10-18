@@ -13,3 +13,4 @@ https://www.boost.org/LICENSE_1_0.txt
 * Added special cases in `operator<<` and `operator>>` when
   the first argument is a stream, to allow `std::cout << _1`.
 * Added `operator\->*`.
+* Added `first`, `second`.

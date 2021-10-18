@@ -90,6 +90,11 @@ template<class A, class B> auto operator>>=( A && a, B && b );
 
 template<class A, class B> auto operator->*( A && a, B && b );
 
+// projections
+
+inline constexpr /unspecified/ first{};
+inline constexpr /unspecified/ second{};
+
 } // namespace lambda2
 } // namespace boost
 ```
@@ -405,3 +410,26 @@ Returns: :: `std::bind( std::forward<B>(b), std::forward<A>(a) );`
 Notes: :: This operator is intended to be used with "projection" function
   objects such as member pointers or member functions taking zero arguments,
   as in `_1\->*&X::m` or `_1\->*&X::f`.
+
+### Projections
+
+```
+inline constexpr /unspecified/ first{};
+```
+
+A function object such that `first(x)` returns `std::get<0>(x)`.
+
+```
+inline constexpr /unspecified/ second{};
+```
+
+A function object such that `second(x)` returns `std::get<1>(x)`.
+
+.Using first and second to print out a map
+```
+void print( std::map<int, std::string> const & m )
+{
+    using namespace boost::lambda2;
+    std::for_each( m.begin(), m.end(), std::cout << _1->*first << ": " << _1->*second << '\n' );
+}
+```
