@@ -2,10 +2,14 @@
 # Distributed under the Boost Software License, Version 1.0.
 # https://www.boost.org/LICENSE_1_0.txt
 
+import-search /boost/config/checks ;
+
 import testing ;
-import ../../config/checks/config : requires ;
+import config : requires ;
 
 project : requirements
+  <source>/boost/config//boost_config
+  <source>/boost/core//boost_core
 
   <warnings>extra
 
@@ -13,7 +17,8 @@ project : requirements
 
   <toolset>msvc:<warnings-as-errors>on
   <toolset>clang:<warnings-as-errors>on
-  <toolset>gcc:<warnings-as-errors>on ;
+  <toolset>gcc:<warnings-as-errors>on
+  ;
 
 run quick.cpp ;
 run lambda2_test.cpp ;
