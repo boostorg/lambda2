@@ -8,8 +8,8 @@ import testing ;
 import config : requires ;
 
 project : requirements
-  <source>/boost/config//boost_config
-  <source>/boost/core//boost_core
+  <library>/boost/config//boost_config
+  <library>/boost/core//boost_core
 
   <warnings>extra
 
