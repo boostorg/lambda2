@@ -51,8 +51,7 @@ jobs:
             install: g++-12
           - toolset: gcc-13
             cxxstd: "03,11,14,17,20,2b"
-            container: ubuntu:23.04
-            os: ubuntu-latest
+            os: ubuntu-24.04
             install: g++-13
           - toolset: gcc-14
             cxxstd: "03,11,14,17,20,2b"
@@ -130,14 +129,12 @@ jobs:
           - toolset: clang
             compiler: clang++-16
             cxxstd: "03,11,14,17,20,2b"
-            container: ubuntu:23.04
-            os: ubuntu-latest
+            os: ubuntu-24.04
             install: clang-16
           - toolset: clang
             compiler: clang++-17
             cxxstd: "03,11,14,17,20,2b"
-            container: ubuntu:23.10
-            os: ubuntu-latest
+            os: ubuntu-24.04
             install: clang-17
           - toolset: clang
             compiler: clang++-18
@@ -145,9 +142,6 @@ jobs:
             container: ubuntu:24.04
             os: ubuntu-latest
             install: clang-18
-          - toolset: clang
-            cxxstd: "03,11,14,17,20,2b"
-            os: macos-12
           - toolset: clang
             cxxstd: "03,11,14,17,20,2b"
             os: macos-13
