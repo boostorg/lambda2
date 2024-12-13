@@ -146,11 +146,11 @@ jobs:
             os: ubuntu-latest
             install: clang-18
           - toolset: clang
-            compiler: clang++-10
+            compiler: clang++-19
             cxxstd: "03,11,14,17,20,2b"
             container: ubuntu:24.10
             os: ubuntu-latest
-            install: clang-10
+            install: clang-19
           - toolset: clang
             cxxstd: "03,11,14,17,20,2b"
             os: macos-13
